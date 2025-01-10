@@ -22,7 +22,7 @@ const std = @import("std");
 
 const Elephant = struct {
     letter: u8,
-    tail: *Elephant = null, // Hmm... tail needs something...
+    tail: ?*Elephant = null, // Hmm... tail needs something...
     visited: bool = false,
 };
 
@@ -47,6 +47,8 @@ pub fn main() void {
 
 // If e1 and e2 are valid pointers to elephants,
 // this function links the elephants so that e1's tail "points" to e2.
+// e2.?.tail = e1.?; looks a bit like TypeScript:
+// e2?.tail = e1!
 fn linkElephants(e1: ?*Elephant, e2: ?*Elephant) void {
     e1.?.tail = e2.?;
 }
@@ -66,6 +68,6 @@ fn visitElephants(first_elephant: *Elephant) void {
 
         // HINT: We want something similar to what `.?` does,
         // but instead of ending the program, we want to exit the loop...
-        e = e.tail ???
+        e = e.tail orelse break;
     }
 }

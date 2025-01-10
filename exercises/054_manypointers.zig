@@ -13,6 +13,10 @@
 const std = @import("std");
 
 pub fn main() void {
+    // var foo: [4]u8 = [4]u8{ 1, 2, 3, 4 };
+    // const foo_ptr: [*]u8 = &foo;
+    // std.debug.print("{}\n", foo_ptr);
+
     // Take a good look at the array type to which we're coercing
     // the zen12 string (the REAL nature of strings will be
     // revealed when we've learned some additional features):
@@ -33,7 +37,7 @@ pub fn main() void {
     // we can CONVERT IT TO A SLICE. (Hint: we do know the length!)
     //
     // Please fix this line so the print statement below can print it:
-    const zen12_string: []const u8 = zen_manyptr;
+    const zen12_string: []const u8 = zen_manyptr[0..21];
 
     // Here's the moment of truth!
     std.debug.print("{s}\n", .{zen12_string});

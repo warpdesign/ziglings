@@ -7,3 +7,4 @@
 # Leave this in here for older zig versions
 /zig-cache/
 .DS_Store
+.env
