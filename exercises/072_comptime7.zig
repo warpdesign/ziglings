@@ -10,6 +10,9 @@
 //     inline while ( i < foo.len ) : (i += 1) {
 //         print(foo[i] ++ "\n", .{foo[i]});
 //     }
+// ~{0}~
+// <{1}>
+// d{2}b
 //
 // You haven't taken off that wizard hat yet, have you?
 //
@@ -35,10 +38,13 @@ pub fn main() void {
     // at compile time.
     //
     // Please fix this to loop once per "instruction":
-    ??? (i < instructions.len) : (???) {
+    inline while (i < instructions.len) : (i += 3) {
 
         // This gets the digit from the "instruction". Can you
         // figure out why we subtract '0' from it?
+        //
+        // This allows to get the actual digit from the Ascii code
+        // since Ascii code for '0' is 48, '1' is 49, '2' is 50, etc.
         const digit = instructions[i + 1] - '0';
 
         // This 'switch' statement contains the actual work done
